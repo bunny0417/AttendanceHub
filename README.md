@@ -56,3 +56,7 @@ eas build -p android --profile preview
 The EAS CLI will provide a link to the Expo dashboard where you can monitor the build progress. 
 
 Once the build is complete, **a download link will be provided directly in your terminal**. You can click that link to download the `.apk` file and install it on your Android device!
+
+
+![WhatsApp Image 2026-02-22 at 1 26 18 AM](https://github.com/user-attachments/assets/324d86bd-6237-4118-b511-a320bf10dd1d)
+
