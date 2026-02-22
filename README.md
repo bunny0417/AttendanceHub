@@ -1,50 +1,58 @@
-# Welcome to your Expo app 👋
+# Attendance Hub 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A beautiful, responsive mobile application built with React Native and Expo to help students seamlessly track their college attendance, calculate bunking possibilities, and visualize their daily statistics.
 
-## Get started
+## Project Setup
 
-1. Install dependencies
+1. **Install dependencies:**
 
    ```bash
    npm install
    ```
 
-2. Start the app
+2. **Start the development server:**
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## How to Compile to Android APK
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+This project uses [EAS (Expo Application Services)](https://expo.dev/eas) to compile the React Native application into a standalone Android APK.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Follow these steps to generate your APK:
 
-## Get a fresh project
-
-When you're ready, run:
+### 1. Install the EAS CLI
+First, you need to install the EAS command-line tool globally on your machine:
 
 ```bash
-npm run reset-project
+npm install -g eas-cli
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Log in to your Expo Account
+You need an Expo account to build the app. If you don't have one, create it at [expo.dev](https://expo.dev) and then log in via your terminal:
 
-## Learn more
+```bash
+eas login
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 3. Configure the Project for EAS
+Initialize EAS within the project (this only needs to be done once and creates an `eas.json` file if it doesn't already exist):
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+eas build:configure
+```
 
-## Join the community
+### 4. Build the APK
+To specifically tell EAS to build a `.apk` file instead of an `.aab` (Android App Bundle, which is used for the Google Play Store), run the following command:
 
-Join our community of developers creating universal apps.
+```bash
+eas build -p android --profile preview
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+*(Note: If you haven't set up a `preview` profile in `eas.json` that sets `buildType: "apk"`, EAS might build an `.aab` by default. Ensuring your `eas.json` specifies `"buildType": "apk"` under the preview profile guarantees an APK output).*
+
+### 5. Download your APK
+The EAS CLI will provide a link to the Expo dashboard where you can monitor the build progress. 
+
+Once the build is complete, **a download link will be provided directly in your terminal**. You can click that link to download the `.apk` file and install it on your Android device!
